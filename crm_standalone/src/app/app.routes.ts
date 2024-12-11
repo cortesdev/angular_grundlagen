@@ -4,6 +4,7 @@ import { DefaultPageComponent } from './pages/default-page/default-page.componen
 import { CustomerComponent } from './pages/customer/customer.component';
 import { HelpComponent } from './pages/help-component/help-component.component';
 import { TemplateSyntaxPageComponent } from './pages/template-syntax-page/template-syntax-page.component';
+import { CustomerListComponent } from './pages/customer/views/customer-list/customer-list.component';
 
 export const routes: Routes = [
     {
@@ -17,7 +18,11 @@ export const routes: Routes = [
     },
     {
         path: 'dashboard',
-        component: CustomerComponent
+        component: CustomerComponent,
+        children: [{
+            path: '',
+            component: CustomerListComponent
+        }]
     },
     {
         path: 'template-syntax',
