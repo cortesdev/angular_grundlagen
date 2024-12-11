@@ -15,7 +15,7 @@ import { NavigationComponent } from './navigation/navigation.component';
   template: ` 
   <app-navigation></app-navigation>
   
-  <div cöass='container py-4'>
+  <div class='container py-4 mx-2'>
   <!-- <h1>CRM</h1> -->
     <router-outlet />
   </div>
