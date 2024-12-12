@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": "true",
   "scripts": {
-    "start": "json-server -w db.json -d 1000 -p 3002"
+    "start": "json-server -w db.json -d 1000 -p 3002",
+    "start:live": "json-server -w db.json -d 500 -p 3002 -s static"
   },
   "dependencies": {
     "json-server": "^0.17.4"
