@@ -1,0 +1,50 @@
+
+
+<form [formGroup]="customerGroup" (ngSubmit)="formSubmitHandler()">
+    <div class="mb-3">
+
+        <label for="name" class="form-label">
+            Name:
+        </label>
+        <input type="name" 
+            class="form-control"
+            [ngClass]="{
+                'is-valid': customerGroup.controls['name'].valid,
+                'is-invalid': customerGroup.controls['name'].invalid && customerGroup.controls['name'].touched
+            }"
+            formControlName="name"
+            id="name" 
+            name="name"
+        />
+
+        <p>Eingegebene name:  </p>
+
+        <label for="creditLimit" class="form-label">
+            kreditLimit:
+        </label>
+
+        <input type="number" 
+        step="0.01"
+        min="0"
+        formControlName="creditLimit"
+        [ngClass]="{
+            'is-valid': customerGroup.controls['creditLimit'].valid,
+            'is-invalid': customerGroup.controls['creditLimit'].invalid && customerGroup.controls['creditLimit'].touched
+        }"
+        class="form-control"
+        id="creditLimit" 
+        name="creditLimit"
+          />
+
+        <p>Eingegebene kreditLimit:  </p>
+
+        <button 
+            class="btn btn-primary me-1"
+            type="submit"
+            [disabled]="customerGroup.invalid"
+            >
+            <ng-content></ng-content>
+        </button> 
+    
+    </div>
+</form>

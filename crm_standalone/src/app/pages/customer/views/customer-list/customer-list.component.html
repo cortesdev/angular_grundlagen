@@ -1,0 +1,49 @@
+<h2>Kundenliste</h2>
+<!-- {{customers | json}} -->
+
+<div class="d-flex justify-content-between my-3">
+    <button class="btn btn-primary"
+    routerLink="new" 
+     >
+        Neuer Kunde
+    </button>
+    <button (click)="loadCustomers()" class="btn btn-outline-secondary">
+        Aktualisieren
+    </button>
+</div>
+
+@if(loading) {
+    <app-loading-indicator />
+} @else if(errorMessage !== null) {
+    <app-error-box>
+       <h3>Es ist eine fehler aufgetreten</h3>
+       <p> {{errorMessage}}</p>
+    </app-error-box>
+} @else {
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Kredit Limit</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        @for(customer of customers; track customer.id) {
+            <tr>
+            <td>{{customer.id}}</td>
+            <td>{{customer.name}}</td>
+            <td class="text-end">{{customer.creditLimit | currency: 'EUR': 'symbol': '1.2-2'}}</td>
+            <td class="text-end">
+                <button class="btn btn-primary btn-sm me-2" [routerLink]="['edit', customer.id]">
+                    Bearbeiten
+                </button>
+                <button class="btn btn-outline-danger btn-sm" (click)="deleteCustomer(customer.id)">
+                    Löschen
+                </button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>}
